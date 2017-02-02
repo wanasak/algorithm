@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace array
 {
@@ -81,6 +78,38 @@ namespace array
                 }
             }
         }
+        public void selectionSort()
+        {
+            for (int i = 0; i < arraySize; i++)
+            {
+                int minimum = i;
+                for (int j = i; j < arraySize; j++)
+                {
+                    if (array[minimum] > array[j])
+                        minimum = j;
+                }
+                swapValues(i, minimum);
+                printArrayHorizontal(i, -1);
+            }
+        }
+        // best
+        public void insertionSort()
+        {
+            for (int i = 1; i < arraySize; i++)
+            {
+                int j = i;
+                int toInsert = array[i];
+                while ((j > 0) && (array[j-1]) > toInsert)
+                {
+                    array[j] = array[j-1];
+                    j--;
+                    printArrayHorizontal(i, j);
+                }
+                array[j] = toInsert;
+                printArrayHorizontal(i, j);
+            }
+        }
+        // data must be ordered
         public void binarySearchValue(int value)
         {
             int lowerIndex = 0;
@@ -111,8 +140,13 @@ namespace array
             prg.generateRandomArray();
 
             // prg.printArrayHorizontal(-1, -1);
-            prg.bubbleSort();
-            prg.binarySearchValue(19);
+            
+            // prg.bubbleSort();
+            // prg.binarySearchValue(19);
+
+            // prg.selectionSort();
+
+            prg.insertionSort();
 
         }
     }
